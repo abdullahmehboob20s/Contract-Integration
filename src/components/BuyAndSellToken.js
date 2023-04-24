@@ -1,7 +1,7 @@
 import contractDetails from "constants/contractDetails";
 import { ethers } from "ethers";
 import React, { useRef } from "react";
-import { useContractWrite } from "wagmi";
+import { useContractRead, useContractWrite } from "wagmi";
 
 function BuyAndSellToken() {
   const buyInputRef = useRef(null);
@@ -16,6 +16,15 @@ function BuyAndSellToken() {
     address: contractDetails.PRESALE_CONTRACT.address,
     functionName: "buy",
   });
+
+  const { data } = useContractRead({
+    abi: contractDetails.PRESALE_CONTRACT.abi,
+    address: contractDetails.PRESALE_CONTRACT.address,
+    functionName: "estimateEthToReceive",
+    args: ["1"],
+  });
+
+  console.log(data?.toString());
 
   console.log({ buyTokenData, buyTokenError });
 
