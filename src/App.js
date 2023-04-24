@@ -1,25 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import { useAccount } from "wagmi";
+import ConnectButton from "./components/ConnectButton";
+import AfterConnectContent from "components/AfterConnectContent";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { address } = useAccount();
+
+  return <div>{!address ? <ConnectButton /> : <AfterConnectContent />}</div>;
 }
 
 export default App;
