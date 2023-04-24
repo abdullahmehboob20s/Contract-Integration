@@ -8,7 +8,7 @@ function App() {
   const { chain } = useNetwork();
   const { switchNetwork, isLoading: isSwitching } = useSwitchNetwork();
 
-  if (chain?.id !== bscTestnet?.id) {
+  if (address && chain?.id !== bscTestnet?.id) {
     return (
       <div>
         <h1>BSC Testnet Supported</h1>

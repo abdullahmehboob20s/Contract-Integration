@@ -17,16 +17,19 @@ function BuyAndSellToken() {
     functionName: "buy",
   });
 
-  const { data } = useContractRead({
-    abi: contractDetails.PRESALE_CONTRACT.abi,
-    address: contractDetails.PRESALE_CONTRACT.address,
-    functionName: "estimateEthToReceive",
-    args: ["1"],
-  });
+  // const { data, write } = useContractWrite({
+  //   abi: contractDetails.PRESALE_CONTRACT.abi,
+  //   address: contractDetails.PRESALE_CONTRACT.address,
+  //   functionName: "estimateTokensToReceive",
+  //   args: ["10000000000000000"],
+  //   overrides: {
+  //     gasLimit: 300000,
+  //   },
+  // });
 
-  console.log(data?.toString());
+  // console.log(data);
 
-  console.log({ buyTokenData, buyTokenError });
+  // console.log({ buyTokenData, buyTokenError });
 
   const buy = (e) => {
     e.preventDefault();
@@ -54,6 +57,8 @@ function BuyAndSellToken() {
           Buy
         </button>
       </form>
+
+      {/* <button onClick={write}>Write</button> */}
     </div>
   );
 }
